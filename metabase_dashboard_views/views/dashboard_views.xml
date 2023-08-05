@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="action_bi_dashboard" model="ir.actions.client">
+            <field name="name">Dasbhboard</field>
+            <field name="tag">action_manage_bi_reports</field>
+            <field name="target"></field>
+        </record>
+
+        <menuitem name="Dashboard" id="bi_reports_menu_dashboard"
+                  sequence="15"
+                  groups="base.group_erp_manager"
+                  web_icon="metabase_dashboard_views,static/description/chart.png"
+                  action="action_bi_dashboard"/>
+
+    </data>
+</odoo>

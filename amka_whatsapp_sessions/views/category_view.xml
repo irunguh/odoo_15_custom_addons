@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <data>
+        <!-- Form view -->
+        <record id="session_categ_form" model="ir.ui.view">
+            <field name="name">ussd.service.categoryform</field>
+            <field name="model">ussd.service.category</field>
+            <field name="arch" type="xml">
+                <form string="Chat Session">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="categ_id" />
+                                <field name="user_id" />
+                                <field name="company_id" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Tree view -->
+        <record id="session_categ_tree" model="ir.ui.view">
+            <field name="name">ussd.service.categorytree</field>
+            <field name="model">ussd.service.category</field>
+            <field name="arch" type="xml">
+                <tree string="List of user Sessions">
+                     <field name="name" />
+                     <field name="categ_id" />
+                     <field name="user_id" />
+                     <field name="company_id" />
+                </tree>
+
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record id="session_categ_action" model="ir.actions.act_window">
+            <field name="name">Chat Session Category</field>
+            <field name="res_model">ussd.service.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to Add New Session Category</p>
+                <p>
+                   Add new Session Category
+                </p>
+            </field>
+        </record>
+
+        <!--menu -->
+        <!--<menuitem name="USDD Session" parent="base.menu_custom" id="ussd_session" />-->
+        <menuitem name="Sessions Categories"
+                  parent="ussd_session" id="session_categ_list" action="session_categ_action" />
+
+    </data>
+</odoo>

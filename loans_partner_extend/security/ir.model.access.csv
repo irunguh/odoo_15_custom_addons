@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+decline_customer_wizard_user,decline_customer_wizard,model_decline_customer_wizard,odoo_customer_supplier_loan_app.group_loan_manager,1,1,1,1
+business_types_perm,business_types,model_business_types,base.group_erp_manager,1,1,1,1

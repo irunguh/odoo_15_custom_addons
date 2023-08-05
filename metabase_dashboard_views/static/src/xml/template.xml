@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ManageReports">
+        <div class="accounts-dashboard-wrap">
+            <div class="o_dashboards col-xs-12 col-sm-12 col-lg-12 col-md-12" style="background-color: #e1e1e1;overflow: scroll; !important; ">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+<!--                                <div class="dash-header">-->
+<!--                                    <h1 class="custom-h1 dashboard-h1">Reporting Dashboard..</h1>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="row" style="margin:0px">
+                <div class="col-sm-12">
+                 <iframe
+                        src="https://bideliverydashboard.konza.go.ke/public/dashboard/61cae879-1def-4cc0-92e3-8726ba17ab73"
+                        frameborder="0" widhheight="100%"
+
+                    ></iframe>
+
+                </div>
+             </div>
+        </div>
+    </t>
+</templates>

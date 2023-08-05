@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <menuitem
+            id="hr.menu_hr_root"
+            name="Human Resource Management"
+            groups="hr.group_hr_manager"
+            web_icon="hr,static/description/icon.png"
+            sequence="185"/>
+
+    </data>
+</odoo>

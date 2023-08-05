@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="view_property_room_tree" model="ir.ui.view">
+            <field name="name">Rooms/Unit</field>
+            <field name="model">property.room</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="building_id"/>
+                    <field name="usage"/>
+                    <field name="rented_room" string="Status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_property_room_form" model="ir.ui.view">
+            <field name="name">Room/Unit</field>
+            <field name="model">property.room</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="attachment_tree_view" type="object"
+                                    icon="fa-files-o">
+                                <field string="Photos" name="doc_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title oe_left">
+                            <h1>
+                                <field name="name" placeholder="Room/Unit Number"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Identification">
+                                <field name="building_id"/>
+                                <field name="level" string="Floor Level"/>
+                            </group>
+                            <group string="Dimension">
+                                <div class="o_row">
+                                    <field name="surface"/><span>m²</span>
+                                </div>
+                               <div class="o_row">
+                                    <field name="height"/><span>m</span>
+                                </div>
+                                <div class="o_row">
+                                    <field name="perimeter"/><span>m</span>
+                                </div>
+                            </group>
+                            <group string="Rent Amount">
+                                <field name="rent_amount" />
+                                <field name="rent_deposit_months" />
+                                <field name="water_deposit_amount" />
+                                <field name="electricity_deposit_amount" />
+                            </group>
+                            <group string="Total Initial Pay">
+                                <field name="total_initial_pay"  />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="General">
+                                <group>
+                                <group>
+                                    <field name="unit_type" />
+                                    <field name="floor_type"/>
+                                    <field name="usage"/>
+
+                                    <field name="rented_room" string="Unit Rented ?"/>
+                                </group>
+                                <group>
+                                    <field name="tenant_id" attrs="{'invisible': [('rented_room', '=', False)]}"/>
+                                </group>
+                                </group>
+                            </page>
+                            <page string="Unit Description">
+                                <group>
+                                    <field name="unit_description" />
+                                </group>
+                            </page>
+                            <page string="Surfaces">
+                                <group>
+                                    <field name="surface_disinsection"/>
+                                    <field name="surface_cleaning_floor"/>
+                                    <field name="surface_cleaning_doors"/>
+                                    <field name="surface_cleaning_windows"/>
+                                </group>
+                                <group>
+
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_property_room_filter" model="ir.ui.view">
+            <field name="name">Rooms/Units</field>
+            <field name="model">property.room</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+
+
+                    <field name="building_id"/>
+                    <field name="usage"/>
+
+                    <separator/>
+                     <filter name="groupby_usage" context="{'group_by' : 'usage'}" string="Usage"/>
+
+                </search>
+            </field>
+        </record>
+
+
+
+        <record id="action_property_room" model="ir.actions.act_window">
+            <field name="name">Rooms/Units</field>
+            <field name="res_model">property.room</field>
+            <field name="view_mode">tree,form,pivot</field>
+        </record>
+
+        <menuitem name="Rooms/Units" id="menu_property_room"
+                  action="action_property_room" parent="base.menu_property_info"/>
+    </data>
+</odoo>

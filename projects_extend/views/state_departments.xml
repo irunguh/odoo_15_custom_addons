@@ -1,0 +1,65 @@
+<odoo>
+  <data>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="state_department_form">
+      <field name="name">state_department_form</field>
+      <field name="model">state.departments</field>
+      <field name="arch" type="xml">
+        <form string="State Departments">
+          <sheet>
+            <div class="oe_title">
+
+                      <group>
+                          <field name="name"/>
+                          <field name="department_head" string="Principal Secretary" />
+                           <field name="ministry"/>
+                          <field name="company_id"/>
+                      </group>
+
+
+            </div>
+          <notebook>
+            <page string="Description">
+                <group col="12">
+                     <field name="description" />
+                </group>
+            </page>
+          </notebook>
+           </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="state_department_tree">
+      <field name="name">State Departments Tree</field>
+      <field name="model">state.departments</field>
+      <field name="arch" type="xml">
+         <tree string="Departments">
+          <field name="name"/>
+              <field name="ministry"/>
+              <field name="department_head" string="Principal Secretary" />
+             <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="state_departments_action">
+      <field name="name">State Departments </field>
+      <field name="res_model">state.departments</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'create': True, 'edit': True}</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="State Departments" id="state_departments_menu"
+              action="state_departments_action"
+              sequence="11" parent="project.menu_project_config"/>
+
+  </data>
+</odoo>

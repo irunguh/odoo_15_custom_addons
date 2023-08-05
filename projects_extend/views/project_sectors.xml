@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="project_sectors_form">
+      <field name="name">project_sectors_form</field>
+      <field name="model">project.sectors</field>
+      <field name="arch" type="xml">
+        <form string="Project Sectors">
+          <sheet>
+            <div class="oe_title">
+
+                      <group>
+                          <field name="name"/>
+                      </group>
+
+
+            </div>
+          <notebook>
+            <page string="Description">
+                <group col="12">
+                     <field name="description" />
+                </group>
+            </page>
+          </notebook>
+           </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="project_sectors_tree">
+      <field name="name">Project Sectors Tree</field>
+      <field name="model">project.sectors</field>
+      <field name="arch" type="xml">
+         <tree string="Sectors">
+          <field name="name"/>
+             <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="project_sectors_action">
+      <field name="name">Project Sectors </field>
+      <field name="res_model">project.sectors</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'create': True, 'edit': True}</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Sectors" id="project_sectors_menu"
+              action="project_sectors_action"
+              sequence="10" parent="project.menu_project_config"/>
+
+  </data>
+</odoo>

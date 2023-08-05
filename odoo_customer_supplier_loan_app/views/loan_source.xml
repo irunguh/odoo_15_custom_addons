@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+	<record id="view_loan_source_form" model="ir.ui.view">
+		<field name="name">loan.source.form</field>
+		<field name="model">loan.source</field>
+		<field name="arch" type="xml">
+			<form string="Loan Source">
+				<sheet>
+					<group>
+						<field name="name"/>
+					</group>
+					<notebook>
+						<page name="description" string="Description">
+							 <group string="General">
+									<group>
+										<field name="description" />
+									</group>
+                                   <group name="company_id" />
+							  </group>
+						</page>
+					</notebook>
+
+
+				 </sheet>
+		 	</form>
+		</field>
+	</record>
+
+	<record id="view_source_type_tree" model="ir.ui.view">
+		<field name="name">loan.source.tree</field>
+		<field name="model">loan.source</field>
+		<field name="arch" type="xml">
+			<tree string="Loan Source">
+				<field name="name"/>
+				<field  name="description"/>
+	        	<field name="company_id"/>
+		    </tree>
+		</field>
+    </record>
+
+	<record id="loan_source_action" model="ir.actions.act_window">
+        <field name="name">Loan Source</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">loan.source</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+        	<p class="oe_view_nocontent_create"> </p>
+            <p></p>
+        </field>
+	</record>
+
+	<menuitem action="loan_source_action" id="menu_loan_source"
+              parent="odoo_customer_supplier_loan_app.menu_configuration"
+              name="Loan Source" sequence="5"/>
+
+    </data>
+</odoo>

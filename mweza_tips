@@ -1,0 +1,8 @@
+- ** customers per company
+ -> to achieve the showing customers per company, you must edit the rule created by odoo by default = ['|', '|', ('partner_share', '=', False), ('company_id', 'in', company_ids), ('company_id', '=', False)]
+ and change it to [('company_id', 'in', company_ids)] - make sure you disable create and write to allow admins to create a new company without hustle
+- ** employees per company
+['|', '|',('company_id','=',False),('company_id', 'in', company_ids),('user_id', '=', user.id)]  to [('company_id', 'in', company_ids)]
+
+- ** hide human resource menu by removing permission to to access menu from internal user, same for website menu
+- ** All users created except super admin must have multi company option not set

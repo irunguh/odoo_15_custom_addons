@@ -1,0 +1,131 @@
+<odoo>
+  <data>
+
+           <record model="ir.actions.act_window" id="project_add_new_action">
+              <field name="name">Add Project</field>
+              <field name="res_model">project.project</field>
+              <field name="view_mode">form</field>
+              <field name="context">{'create': True}</field>
+          </record>
+
+           <record id="project_project_extend" model="ir.ui.view">
+            <field name="name">project_project_extend</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <field name="label_tasks" position="before">
+                        <field name="is_a_bill" />
+                        <!--<field name="government_ministry" /> -->
+                        <field name="state_department" />
+
+                </field>
+
+                  <field name="user_id" position="replace">
+                        <field name="user_id" />
+                </field>
+
+                <field name="partner_id" position="replace">
+                        <field name="partner_id" invisible="1"/>
+                </field>
+
+                  <xpath  expr="//page[@name='description']" position="before">
+                       <page name='project_details' string="Details">
+                         <group name="container_row_2">
+                             <group string="Sector">
+                                 <field name="sector" />
+                             </group>
+                             <group string="Jobs">
+                                  <field name="no_of_jobs" />
+                             </group>
+                            <group string="Investment Amount">
+                                <field name="investment_amount" />
+                            </group>
+                             <group string="Days in Progress">
+                                <field name="days_in_progress" />
+                            </group>
+                         </group>
+                       </page>
+
+                       <page attrs="{'invisible': [('is_a_bill', '=', False)]}" name='bill_details' string="Bill Details">
+                         <group name="container_row_2">
+                             <group string="Sponsor">
+                                 <field name="bill_sponsor" />
+                             </group>
+                             <group string="Dated">
+                                  <field name="date" />
+                             </group>
+                            <group string="Maturity">
+                                <field name="maturity" />
+                            </group>
+                             <group string="Gazette Notice No">
+                                <field name="gazette_no" />
+                            </group>
+                             <group string="Readings">
+                                <field name="reading_one" />
+                                 <field name="reading_two" />
+                                 <field name="reading_three" />
+                            </group>
+
+                             <group string="Assent">
+                                 <field name="assent" />
+                             </group>
+                             <group string="Remarks">
+                                 <field name="remarks" />
+                             </group>
+                         </group>
+                       </page>
+
+                  </xpath>
+            </field>
+         </record>
+
+       <!-- extend task -->
+      <record id="project_task_extend" model="ir.ui.view">
+          <field name="name">project_task_extend</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <field name="user_ids" position="before">
+                    <field name="team_leader" required="True" />
+                     <field name="company_id" required="True" />
+                     <field name="partner_id" position="replace">
+                        <field name="partner_id" string="Partner"/>
+                     </field>
+                </field>
+            </field>
+
+      </record>
+
+        <record id="task_type_edit_extend" model="ir.ui.view">
+            <field name="name">project.task.type.form</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="is_pending" />
+                     <field name="is_done"  />
+                </field>
+            </field>
+        </record>
+
+      <record id="project_project_kanban_extend" model="ir.ui.view">
+            <field name="name">project_project_extend_kanban</field>
+            <field name="model">project.project</field>
+           <field name="inherit_id" ref="project.view_project_kanban" />
+          <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('o_kanban_manage_reporting')]" position="inside">
+                <div role="menuitem">
+                  <!-- <t t-set="val" t-value="http://test.com" />-->
+                   <!--  <div class="row">
+                                    <div class="col-12">
+                                        <strong><t t-esc="record.id.value"/></strong>
+                                    </div>
+                                </div>-->
+                    <a target="new" t-attf-href = "https://bimetabase.amkatek.com/public/dashboard/d1ed6b84-ea73-4f8e-937b-eb5aeb07bcf9?project={{record.id.value}}">
+                        View Dashboard</a>
+                </div>
+            </xpath>
+          </field>
+       </record>
+  </data>
+</odoo>

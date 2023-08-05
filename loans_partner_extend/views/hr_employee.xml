@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+         <menuitem
+            id="hr.menu_hr_root"
+            name="Human Resource Management"
+            groups="hr.group_hr_manager,hr.group_hr_user,base.group_user"
+            web_icon="hr,static/description/icon.png"
+            sequence="185"/>
+    </data>
+</odoo>

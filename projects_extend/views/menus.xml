@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <menuitem name="Projects/Task Management"
+            id="project.menu_main_pm"
+            groups="project.group_project_manager,project.group_project_user"
+            web_icon="metabase_dashboard_views,static/description/project.png"
+            sequence="70"/>
+
+         <menuitem
+                   id="project.menu_projects_group_stage" name="Quick Actions"
+                   parent="project.menu_main_pm" sequence="0"
+                   groups="project.group_project_manager,project.group_project_user"/>
+
+
+         <menuitem name="Add New Project"
+            id="add_new_project_menu"
+            action="project_add_new_action"
+                   parent="project.menu_projects_group_stage"
+            sequence="1"/>
+       <!-- action="open_view_project_all_group_stage"  -->
+        <menuitem name="View All Projects"
+            id="view_new_project_menu" parent="project.menu_projects_group_stage"
+            action="project.open_view_project_all"
+            sequence="2"/>
+
+    </data>
+</odoo>

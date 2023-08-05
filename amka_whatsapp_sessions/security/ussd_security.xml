@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="group_ussd_sessions" model="res.groups">
+            <field name="name">USSD Manager</field>
+        </record>
+
+        <record model="ir.rule" id="ussd_session_comp_rule">
+            <field name="name">USSD Session multi-company</field>
+            <field name="model_id" ref="model_ussd_session"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="ussd_service_category_comp_rule">
+            <field name="name">USSD Service Category multi-company</field>
+            <field name="model_id" ref="model_ussd_service_category"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="ussd_search_session_values_comp_rule">
+            <field name="name">USSD Session Values multi-company</field>
+            <field name="model_id" ref="model_search_session_values"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</openerp>

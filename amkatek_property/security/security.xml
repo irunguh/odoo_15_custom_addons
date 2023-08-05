@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<odoo noupdate="1">
+
+    <!--Group for  manager -->
+    <record id="group_property_manager" model="res.groups">
+        <field name="name">Property Manager</field>
+    </record>
+
+    <!--Group for  user -->
+    <record id="group_property_user" model="res.groups">
+        <field name="name">Property User</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loyalty_recompute,loyalty_point_recompute,model_loyalty_points_recompute,group_loyalty_points_recompute,1,1,1,0
+access_loyalty_points_recompute_wizard,loyalty_points_recompute_wizard,model_loyalty_points_recompute_wizard,group_loyalty_points_recompute,1,1,1,0

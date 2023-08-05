@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="ministry_form">
+      <field name="name">ministry_form</field>
+      <field name="model">government.ministry</field>
+      <field name="arch" type="xml">
+        <form string="Government Ministries">
+          <sheet>
+            <div class="oe_title">
+
+                      <group>
+                          <field name="name"/>
+                          <field name="minister" string="Cabinet Secretary" />
+                          <field name="secretary" string="Principal Secretary" />
+                      </group>
+
+
+            </div>
+          <notebook>
+            <page string="Description">
+                <group col="12">
+                     <field name="description" />
+                </group>
+            </page>
+          </notebook>
+           </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="ministry_tree">
+      <field name="name">Ministry Tree</field>
+      <field name="model">government.ministry</field>
+      <field name="arch" type="xml">
+         <tree string="Ministries">
+           <field name="name"/>
+             <field name="minister" string="Cabinet Secretary" />
+             <field name="secretary" string="Principal Secretary" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="ministry_actions_view">
+      <field name="name">Ministries </field>
+      <field name="res_model">government.ministry</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'create': True, 'edit': True}</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Government Ministries" id="government_ministries_menu"
+              action="ministry_actions_view"
+              sequence="11" parent="project.menu_project_config"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_sector_users,project_sector_users,model_project_sectors,group_project_sectors_user,1,1,1,0
+access_project_sector_manager,project_sector_manager,model_project_sectors,group_project_sectors_manager,1,1,1,1
+access_state_department_user,state_departments_user,model_state_departments,group_state_department_user,1,1,1,1
+access_state_department_manager,state_departments_manager,model_state_departments,group_state_department_manager,1,1,1,1
+access_ministries_manager,ministries_manager,model_government_ministry,group_ministry_manager,1,1,1,1
+access_ministries_user,ministries_user,model_government_ministry,group_ministry_user,1,1,0,0

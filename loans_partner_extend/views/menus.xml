@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.actions.act_window" id="res_partner_customer_action">
+          <field name="name">Customers</field>
+          <field name="res_model">res.partner</field>
+          <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_a_customer', '=', True)]</field>
+          <field name="context">{'create': True, 'edit': True}</field>
+        </record>
+
+         <menuitem name="Customers Profiles"
+            id="customer_menu_main_custom"
+            web_icon="loans_partner_extend,static/description/logo.png" action="res_partner_customer_action"
+            sequence="8"/>
+
+
+         <menuitem name="Customers"
+            id="customer_menu_main_custom_in_loans" parent="odoo_customer_supplier_loan_app.sub_req_menu_loan"
+            action="res_partner_customer_action"
+            sequence="100"/>
+
+
+    </data>
+</odoo>

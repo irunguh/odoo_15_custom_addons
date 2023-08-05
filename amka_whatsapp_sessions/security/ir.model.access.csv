@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ussd_sessions,access_ussd_sessions,model_ussd_session,group_ussd_sessions,1,1,1,1
+access_submissions_sessions,access_submissions_sessions,model_search_session_values,group_ussd_sessions,1,1,1,1

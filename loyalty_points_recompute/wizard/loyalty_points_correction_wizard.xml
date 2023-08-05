@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="view_group_loyalty_points_recompute_wizard" model="ir.ui.view">
+            <field name="name">Recompute Points</field>
+            <field name="model">loyalty.points.recompute_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Compute">
+
+                    <p class="oe_grey">
+                        Compute Loyalty Points
+                    </p>
+
+                    <group>
+                         <field name="customer_id" />
+                    </group>
+
+                    <footer>
+                        <button name="recompute_points_for_customers" string="Compute Points" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_compute_customer_points" model="ir.actions.act_window">
+            <field name="name">Customer Points</field>
+            <field name="res_model">loyalty.points.recompute_wizard</field>
+            <field name="view_mode">form</field>
+			<field name="view_id" ref="view_group_loyalty_points_recompute_wizard" />
+            <field name="target">new</field>
+        </record>
+
+
+		<menuitem id="fix_customer_points"
+			name="Fix Customer Points"
+			parent="bi_sale_loyalty.main_loyalty_history"
+			sequence="20"
+			action = "action_compute_customer_points"
+				  groups="bi_sale_loyalty.group_loyalty_history"
+		/>
+
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <data>
+        <!-- Form view -->
+        <record id="session_form" model="ir.ui.view">
+            <field name="name">ussd.session.form</field>
+            <field name="model">ussd.session</field>
+            <field name="arch" type="xml">
+                <form string="Chatbot Session">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="phone_no" />
+                                <field name="session_id" />
+                                <field name="level" />
+                                <field name="email" />
+                                <field name="customer_id" />
+                                <field name="lang" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Tree view -->
+        <record id="session_tree" model="ir.ui.view">
+            <field name="name">ussd.session.tree</field>
+            <field name="model">ussd.session</field>
+            <field name="arch" type="xml">
+                <tree string="List of user Sessions">
+                     <field name="name" />
+                     <field name="phone_no" />
+                     <field name="session_id" />
+                     <field name="unique_session_id" />
+                     <field name="level" />
+                     <field name="email" />
+                    <field name="customer_id" />
+                     <field name="lang" />
+                    <field name="related_partner_record" />
+                     <field name="company_id" />
+                </tree>
+
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record id="session_action" model="ir.actions.act_window">
+            <field name="name">Chatbot Session</field>
+            <field name="res_model">ussd.session</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to Add New Chatbot Session</p>
+                <p>
+                   Add new Chatbot Session
+                </p>
+            </field>
+        </record>
+
+        <!--menu -->
+        <menuitem name="Chatbots"  id="ussd_session" parent="mass_mailing_sms_extend.mass_messages_parent_menu"
+                  sequence="3"/>
+        <menuitem name="Chatbot Sessions" parent="ussd_session" id="session_listing"
+                  action="session_action" />
+
+    </data>
+</odoo>

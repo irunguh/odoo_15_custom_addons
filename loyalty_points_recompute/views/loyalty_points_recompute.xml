@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="loyalty_points_recomputer_form">
+      <field name="name">loyalty_points_recomputer_form</field>
+      <field name="model">loyalty.points.recompute</field>
+      <field name="arch" type="xml">
+        <form string="Points Re-compute Request">
+          <header>
+
+           <button class="btn-success" name="action_confirm" states="draft" type="object" string="Confirm"/>
+               <button name="action_approve"  class="oe_highlight" states="confirm" type="object" string="Approve"/>
+          <button name="action_cancel" states="draft,confirm" type="object" class="btn-danger" string="Cancel"/>
+
+          <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved,sale,done,cancel"/>
+          </header>
+          <sheet>
+
+
+
+                <group>
+
+                      <field name="name"/>
+
+
+                </group>
+
+          <group>
+              <group string="Customer Details">
+
+                  <field name="partner_id"/>
+                  <field name="date_order"/>
+
+
+              </group>
+
+          </group>
+
+           </sheet>
+
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="loyalty_points_recompute_tree">
+      <field name="name">loyalty points recompute Tree</field>
+      <field name="model">loyalty.points.recompute</field>
+      <field name="arch" type="xml">
+         <tree string="Loyalty Points Requests"  decoration-success="state=='approve'" decoration-warning="state=='confirm'" decoration-danger="state=='draft'">
+          <field name="name"/>
+          <field name="date_order"/>
+          <field name="partner_id" />
+          <field name="user_id" />
+           <field name="state" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="loyalty_points_recompute_action">
+      <field name="name">Loyalty Points Recompute </field>
+      <field name="res_model">loyalty.points.recompute</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'create': True, 'edit': True}</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Re-Compute Customer Points" sequence="10" id="menu_recompute_loyalty_points" parent="bi_sale_loyalty.main_loyalty_history"
+              action="loyalty_points_recompute_action"/>
+
+  </data>
+</odoo>

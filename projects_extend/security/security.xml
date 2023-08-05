@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!--Group for  user -->
+    <record id="group_project_sectors_user" model="res.groups">
+        <field name="name">Project Sectors User</field>
+    </record>
+
+    <!--Group for  Manager -->
+    <record id="group_project_sectors_manager" model="res.groups">
+        <field name="name">Project Sectors Manager</field>
+    </record>
+
+     <!--Group for  user -->
+    <record id="group_state_department_user" model="res.groups">
+        <field name="name">State Department User</field>
+    </record>
+
+    <!--Group for  Manager -->
+    <record id="group_state_department_manager" model="res.groups">
+        <field name="name">State Department Manager</field>
+    </record>
+
+     <!--Group for  Manager -->
+    <record id="group_ministry_manager" model="res.groups">
+        <field name="name">Ministry Manager</field>
+    </record>
+    <!--Group for  user -->
+    <record id="group_ministry_user" model="res.groups">
+        <field name="name">Ministry User</field>
+    </record>
+
+</odoo>

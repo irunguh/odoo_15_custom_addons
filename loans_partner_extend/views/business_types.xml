@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+
+    <!-- Form view -->
+    <record model="ir.ui.view" id="business_types_form">
+      <field name="name">Business Type Form</field>
+      <field name="model">business.types</field>
+      <field name="arch" type="xml">
+        <form string="Business Type">
+
+          <sheet>
+            <div class="oe_title">
+                  <h1>
+                      <field name="name" readonly="0"/>
+                  </h1>
+            </div>
+          <group>
+              <field name="description"/>
+          </group>
+
+           </sheet>
+
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="business_types_tree">
+      <field name="name">Business Type Tree</field>
+      <field name="model">business.types</field>
+      <field name="arch" type="xml">
+         <tree string="Business Types">
+          <field name="name"/>
+             <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="business_types_action">
+      <field name="name">Business Type</field>
+      <field name="res_model">business.types</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'create': True, 'edit': True}</field>
+    </record>
+
+     <menuitem parent="odoo_customer_supplier_loan_app.menu_configuration" name="Business Types" id="business_types_menu" groups="base.group_erp_manager"
+               action="business_types_action"
+                sequence="100"
+        />
+
+  </data>
+</odoo>

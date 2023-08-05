@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <data>
+        <!-- Form view -->
+        <record id="session_submission_form" model="ir.ui.view">
+            <field name="name">search.session.values.form</field>
+            <field name="model">search.session.values</field>
+            <field name="arch" type="xml">
+                <form string="Submitted Session Values">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                 <field name="company_id" />
+                                 <field name="client_county" />
+                                <field name="session_id" />
+                                <field name="image_video" />
+                                <field name="constituency" />
+                                <field name="polling_stattion" />
+                                <field name="any_other_details" />
+                                <field name="user" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Tree view -->
+        <record id="search_session_values_tree" model="ir.ui.view">
+            <field name="name">search.session.values.tree</field>
+            <field name="model">search.session.values</field>
+            <field name="arch" type="xml">
+                <tree string="List of user Sessions">
+                     <field name="name" />
+                     <field name="company_id" />
+                                <field name="client_county" />
+                    <field name="session_id" />
+                                <field name="image_video" />
+                                <field name="constituency" />
+                                <field name="polling_stattion" />
+                                <field name="any_other_details" />
+                                <field name="user" />
+
+                </tree>
+
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record id="search_session_values_action" model="ir.actions.act_window">
+            <field name="name">Submitted Data</field>
+            <field name="res_model">search.session.values</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to Add New USDD Submission</p>
+                <p>
+                   Add new USSD Submission
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem name="Submitted Data" parent="ussd_session" id="ussd_submissions"
+                  action="search_session_values_action" />
+
+    </data>
+</odoo>
