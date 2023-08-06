@@ -27,6 +27,7 @@ class PolicyDetails(models.Model):
     _name = 'policy.details'
 
     name = fields.Char(string='Name', required=True)
+    insurance_partner = fields.Many2one('res.partner', string='Insured By',domain=[('is_insurance', '=', True)])
     policy_type_id = fields.Many2one(
         'policy.type', string='Policy Type', required=True)
     payment_type = fields.Selection(

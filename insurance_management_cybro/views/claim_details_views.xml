@@ -28,14 +28,14 @@
                     </div>
                     <group>
                         <group>
-                            <field name="partner_id"/>
-                            <field name="insurance_id" options="{'no_create': True}"/>
+                            <field  attrs="{'readonly': [('state', 'in', ['confirm','approved','reject','cancel'])]}"  name="partner_id"/>
+                            <field attrs="{'readonly': [('state', 'in', ['confirm','approved','reject','cancel'])]}" name="insurance_id" options="{'no_create': True}"/>
                             <field name="policy_id"/>
 
-                            <field name="incident_type" />
+                            <field attrs="{'readonly': [('state', 'in', ['confirm','approved','reject','cancel'])]}" name="incident_type" />
                         </group>
                         <group>
-                            <field name="date_claimed"/>
+                            <field attrs="{'readonly': [('state', 'in', ['confirm','approved','reject','cancel'])]}" name="date_claimed"/>
 
                             <field name="amount"/>
                             <field name="invoice_id"/>
@@ -43,7 +43,7 @@
                     </group>
                     <notebook>
                         <page string="Description">
-                            <field name="note_field"/>
+                            <field attrs="{'readonly': [('state', 'in', ['confirm','approved','reject','cancel'])]}" name="note_field"/>
                         </page>
                         <page string="Others">
                              <group>
@@ -58,6 +58,11 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'post_refresh':True}" help="Follow this project to automatically track the events associated to tasks and issues of this project." groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>

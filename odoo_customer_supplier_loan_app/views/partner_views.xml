@@ -8,19 +8,19 @@
 	    <field name="priority" eval="8" />
 	    <field name="inherit_id" ref="base.view_partner_form"/>
 	    <field name="arch" type="xml">
-	        <xpath expr="//page[@name='sales_purchases']" position="after">
-	            <page name="Loan" string="Loans">
+	        <xpath  expr="//page[@name='sales_purchases']" position="after">
+	            <page attrs="{'invisible': [('is_company','=', True)]}" name="Loan" string="Loans">
 	                <field name="loan_ids"/>
 	            </page>
 	            
-	            <page name="policy" string="Policies">
+	            <page attrs="{'invisible': [('is_company','=', True)]}" name="policy" string="Policies">
 	                <field name="policy_ids"/>
 	            </page>
 	        </xpath>
 	        
-	        <xpath expr="//field[@name='vat']" position="after">
-	            <field name="allow_multiple_loan"/>
-	            <field name="loan_defaulter"/>
+	        <xpath  expr="//field[@name='vat']" position="after">
+	            <field attrs="{'invisible': [('is_company','=', True)]}" name="allow_multiple_loan"/>
+	            <field attrs="{'invisible': [('is_company','=', True)]}" name="loan_defaulter"/>
 	        </xpath>
 	    </field>
 	</record>

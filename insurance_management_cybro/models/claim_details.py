@@ -25,7 +25,7 @@ from odoo import api, fields, models, _
 
 class ClaimDetails(models.Model):
     _name = 'claim.details'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin', 'rating.parent.mixin']
 
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -42,7 +42,7 @@ class ClaimDetails(models.Model):
     insurance_id = fields.Many2one('insurance.details', required=True,
                                    domain=[('state', '=', 'confirmed')],
                                    help="Confirmed orders can be selected")
-    partner_id = fields.Many2one('res.partner',string='Customer', required=True)
+    partner_id = fields.Many2one('res.partner',string='Customer',tracking=True, required=True,domain=[('is_a_customer', '=', True)])
     policy_id = fields.Many2one(related='insurance_id.policy_id',
                                 string='Policy', readonly=True)
 
@@ -52,15 +52,15 @@ class ClaimDetails(models.Model):
     currency_id = fields.Many2one(
         'res.currency', string='Currency', required=True,
         default=lambda self: self.env.user.company_id.currency_id.id)
-    amount = fields.Monetary(related='insurance_id.amount', string='Amount')
+    amount = fields.Monetary(related='insurance_id.amount', string='Amount Insured')
     date_claimed = fields.Date(
-        string='Date Applied', default=fields.Date.context_today)
+        tracking=True,string='Date Applied', default=fields.Date.context_today)
     invoice_id = fields.Many2one('account.move', string='Invoiced',
                                  readonly=True, copy=False)
     note_field = fields.Html(string='Comment')
 
     incident_type = fields.Selection([('screen_repair','Screen Breakage'),('theft','Phone Theft')],
-                                  string='Nature of Incident',required=True)
+                                  string='Nature of Incident',required=True,tracking=True)
 
     # Actions
     # Confirm an order - This means you have checked the data

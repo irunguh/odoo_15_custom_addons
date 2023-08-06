@@ -51,10 +51,11 @@ class PartnerExtend(models.Model):
     ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
     #customer_account_number = fields.Char(string='Account Number')
     loan_limit = fields.Float(string="Loan Limit", required=False, default=0.00)
+    is_insurance = fields.Boolean(string="Is an Insurance",default=False)
     is_enrolled = fields.Boolean(string="Is Enrolled ?", default=False)
     id_type = fields.Selection([('national_id','National Id'),('military_id','Military Id'),
-                                ('passport','Passport')],string='Id Type',required=True)
-    id_number = fields.Char(string="ID Number",required=True)
+                                ('passport','Passport')],string='Id Type',required=False)
+    id_number = fields.Char(string="ID Number",required=False)
     account_pin = fields.Char(string='Account PIN', required=False, default=get_random_pin)
     otp_unsubscribe = fields.Boolean(string='Unsubscribe OTP', default=False)
     registered_via_mobile = fields.Boolean(string='Was Registered via USSD app',
